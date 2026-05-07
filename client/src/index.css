@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600;1,700;1,900&family=Outfit:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #FDFAF5;
+  --cream2: #F5F0E8;
+  --cream3: #EDE6D8;
+  --gold: #B8892A;
+  --gold2: #D4A845;
+  --gold3: #F2C96A;
+  --gold-light: #FDF3DC;
+  --rose: #C94070;
+  --rose2: #E8527A;
+  --rose-light: #FDE8EF;
+  --violet: #5B3FD4;
+  --violet2: #7B5FE8;
+  --violet-light: #EEE9FF;
+  --ink: #1A1510;
+  --ink2: #3D3020;
+  --muted: #8A7A65;
+  --border: #E8DDD0;
+  --card: #FFFFFF;
+}
+
+@layer base {
+  * {
+    border-color: var(--cream3);
+  }
+  body {
+    @apply font-body overflow-x-hidden;
+    background-color: var(--cream);
+    color: var(--ink);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .font-body {
+    font-family: 'Outfit', sans-serif;
+  }
+  
+  .mesh-gradient {
+    background: radial-gradient(at 0% 0%, var(--gold-light) 0, transparent 50%),
+                radial-gradient(at 100% 0%, var(--rose-light) 0, transparent 50%),
+                radial-gradient(at 100% 100%, var(--violet-light) 0, transparent 50%),
+                radial-gradient(at 0% 100%, var(--gold-light) 0, transparent 50%);
+    background-size: 200% 200%;
+    animation: moveGradient 20s ease infinite;
+  }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.05)];
+  }
+
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    @apply text-white shadow-[0_10px_20px_rgba(184,137,42,0.2)] hover:shadow-[0_15px_30px_rgba(184,137,42,0.3)] transition-all;
+  }
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes wave {
+  0%, 100% { transform: scaleY(0.5); }
+  50% { transform: scaleY(1.5); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.15); opacity: 0.6; }
+}
+
+.animate-gradient {
+  background-size: 200% auto;
+  animation: gradientShift 4s linear infinite;
+}
+
+.animate-ticker {
+  animation: ticker 40s linear infinite;
+}
+
+.animate-wave {
+  animation: wave 1s ease-in-out infinite;
+}
+
+.dot-mesh {
+  background-image: radial-gradient(rgba(184, 137, 42, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.perspective-grid {
+  background-image: linear-gradient(rgba(184, 137, 42, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184, 137, 42, 0.08) 1px, transparent 1px);
+  background-size: 100px 100px;
+  transform: perspective(1200px) rotateX(60deg);
+  position: absolute;
+  bottom: -40%;
+  left: -10%;
+  right: -10%;
+  height: 120%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.3;
+}
